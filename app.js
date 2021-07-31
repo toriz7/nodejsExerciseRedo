@@ -1,8 +1,8 @@
 const express = require('express');
-const admin = require('./routes/admin');
 const nunjucks= require('nunjucks');
+const logger = require('morgan')
 
-
+const admin = require('./routes/admin');
 const app = express();
 const port = 3000;
 
@@ -11,6 +11,7 @@ nunjucks.configure('template',{ //폴더 지정
     express:app //앱 설정
 })
 
+app.use(logger('dev'));
 
 app.get('/', (req,res) => {
     res.send('express start');
