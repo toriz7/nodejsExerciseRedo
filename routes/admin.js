@@ -6,7 +6,7 @@ router.get('/',(req,res)=>{
 })
 
 router.get('/products', (req,res) => {
-    res.render('admin/products.html',{
+    res.render('admin/products.html',{ //변수 자체를 message 라는 이름으로 주는 중
         message : "hello"
     });
 });
