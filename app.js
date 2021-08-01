@@ -3,6 +3,8 @@ const nunjucks= require('nunjucks');
 const logger = require('morgan')
 
 const admin = require('./routes/admin');
+const { proppatch } = require('./routes/admin');
+
 const app = express();
 const port = 3000;
 
@@ -12,6 +14,12 @@ nunjucks.configure('template',{ //폴더 지정
 })
 
 app.use(logger('dev'));
+
+/* 
+body-paerser depreacated!!
+*/
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 
 app.get('/', (req,res) => {
     res.send('express start');
