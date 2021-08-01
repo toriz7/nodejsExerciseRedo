@@ -21,6 +21,8 @@ body-paerser depreacated!!
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
+app.use('/uploads',express.static('uploads')); // 앞 : 정적파일의 url, 뒤 : 정적파일의 폴더명
+
 app.get('/', (req,res) => {
     res.send('express start');
 });
