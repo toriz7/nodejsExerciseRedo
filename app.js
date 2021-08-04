@@ -23,11 +23,27 @@ app.use(express.urlencoded({extended:true}))
 
 app.use('/uploads',express.static('uploads')); // 앞 : 정적파일의 url, 뒤 : 정적파일의 폴더명
 
+app.use( (req,res,next) =>{
+    app.locals.isLogin = true; // locals 통해 전체 변수를 줄 수 있다
+    next();
+})
+
+
+
 app.get('/', (req,res) => {
     res.send('express start');
 });
 
 app.use('/admin',admin)
+
+app.use( ( req , res, _ ) => {
+    res.status(404).render('common/404.html')
+});
+
+// 500
+app.use( (err, req, res,  _ ) => {
+    res.status(500).render('common/500.html')
+});
 
 app.listen( port, () => {
     console.log('Express listening on port', port);
