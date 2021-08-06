@@ -1,6 +1,7 @@
 const express = require('express');
 const nunjucks= require('nunjucks');
 const logger = require('morgan')
+
 class App {
 
     constructor () {
@@ -35,8 +36,8 @@ class App {
 
         // 미들웨어 셋팅
         this.app.use(logger('dev'));
-        this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: false }));
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: false }));
 
     }
 
